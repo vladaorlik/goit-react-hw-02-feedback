@@ -13,19 +13,15 @@ class Feedback extends Component {
 
   onLeaveFeedback = evt => {
     const currentFeedback = evt.target.textContent;
-    console.log('currentFeedback :>> ', currentFeedback);
     this.setState(prevState => {
       return { [currentFeedback]: prevState[currentFeedback] + 1 };
     });
   };
 
   countTotalFeedback = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad;
-    return total;
+    return this.state.good + this.state.neutral + this.state.bad;
   };
   countPositiveFeedbackPercentage = () => {
-    console.log('this.state.good :>> ', this.state.good);
-    console.log('this.countTotalFeedback :>> ', this.countTotalFeedback());
 
     return Math.round((this.state.good / this.countTotalFeedback()) * 100);
   };
